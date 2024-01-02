@@ -15,7 +15,7 @@ const Month = () => {
   const [currentMonth, setCurrentMonth] = useState([])
   const billList = useSelector(state => state.bill.billList)
 
-  const { billData } = useBill({currentMonth})
+  const { billData } = useBill({curBillList: currentMonth})
 
   // method
   const confirmFn = (date) => {

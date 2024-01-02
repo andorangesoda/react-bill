@@ -5,20 +5,20 @@ import { useMemo } from 'react'
  * @param billList
  * @returns {{billData: {income: string, balance, pay: string}}}
  */
-const useBill = ({billList}) => {
+const useBill = ({curBillList}) => {
   const plusMoneyFn = (monthBills, type) => {
     return monthBills ? monthBills.filter(item => item.type === type).reduce((a, c) => a + c.money, 0) : 0
   }
 
   const billData = useMemo(() => {
-    const pay = plusMoneyFn(billList, 'pay')
-    const income = plusMoneyFn(billList, 'income')
+    const pay = plusMoneyFn(curBillList, 'pay')
+    const income = plusMoneyFn(curBillList, 'income')
     return {
       pay: pay.toFixed(2),
       income: income.toFixed(2),
       balance: (pay + income).toFixed(2)
     }
-  }, [billList])
+  }, [curBillList])
 
   return {
     billData

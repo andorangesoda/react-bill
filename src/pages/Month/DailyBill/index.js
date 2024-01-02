@@ -3,7 +3,7 @@ import './index.scss'
 import useBill from '@/component/bill/use-bill'
 
 const DailyBill = ({ date, billList }) => {
-  const { billData } = useBill({billList})
+  const { billData } = useBill({curBillList: billList})
 
   return (
     <div className={classNames('dailyBill','expand')}>
