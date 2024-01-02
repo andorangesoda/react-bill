@@ -1,0 +1,82 @@
+.dailyBill {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: #ffffff;
+
+  .header {
+    --ka-text-color: #888c98;
+    padding: 15px 15px 10px 15px;
+
+    .dateIcon {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 21px;
+      margin-bottom: 9px;
+      .date {
+        font-size: 14px;
+      }
+      .icon {
+        width: 19px;
+        height: 19px;
+        color: var(--ka-text-color);
+        transform-origin: center;
+        transition: all 0.3s;
+        transform: rotate(180deg);
+      }
+      .icon.expand {
+        transform: rotate(0);
+      }
+    }
+
+    .oneLineOverview {
+      display: flex;
+      justify-content: space-between;
+      .pay {
+        flex: 1;
+        .type {
+          font-size: 10px;
+          margin-right: 2.5px;
+          color: #e56a77;
+        }
+        .money {
+          font-size: 13px;
+          color: var(--ka-text-color);
+        }
+      }
+      .income {
+        // flex: 1 将所有的子元素设置为相同的伸缩比例，它们将平均占据剩余空间
+        flex: 1;
+        .type {
+          font-size: 10px;
+          margin-right: 2.5px;
+          color: #4f827c;
+        }
+        .money {
+          font-size: 13px;
+          color: var(--ka-text-color);
+        }
+      }
+      .balance {
+        flex: 1;
+        margin-bottom: 5px;
+        text-align: right;
+        .type {
+          font-size: 10px;
+          color: var(--ka-text-color);
+        }
+        .money {
+          line-height: 17px;
+          margin-right: 6px;
+          font-size: 17px;
+        }
+      }
+    }
+  }
+}
+
+.dailyBill.expand {
+  .header {
+    border-bottom: 1px solid #ececec;
+  }
+}
