@@ -73,6 +73,39 @@
       }
     }
   }
+
+  .billList {
+    display: none;
+    padding: 15px 10px 15px 15px;
+    .bill {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 43px;
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .detail {
+        flex: 1;
+        padding: 4px 0;
+        .billType {
+          height: 17px;
+          line-height: 17px;
+          font-size: 15px;
+        }
+      }
+      .money {
+        font-size: 17px;
+        &.pay {
+          color: #ff917b;
+        }
+        &.income {
+          color: #4f827c;
+        }
+      }
+    }
+  }
 }
 
 .dailyBill.expand {

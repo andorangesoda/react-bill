@@ -1,16 +1,19 @@
 import classNames from 'classnames'
 import './index.scss'
 import useBill from '@/component/bill/use-bill'
+import { billTypeToName } from '@/utils/util'
+import {useState} from "react";
 
 const DailyBill = ({ date, billList }) => {
   const { billData } = useBill({curBillList: billList})
+  const [visible, setVisible] = useState(false)
 
   return (
     <div className={classNames('dailyBill','expand')}>
       <div className="header">
         <div className="dateIcon">
           <span className="date">{date}</span>
-          <span className={classNames('icon')}/>
+          <span className={classNames('icon',visible && 'expand')} onClick={()=>setVisible(!visible)}/>
         </div>
         <div className="oneLineOverview">
           <div className="pay">
@@ -26,6 +29,19 @@ const DailyBill = ({ date, billList }) => {
             <span className="money">{billData.balance}</span>
           </div>
         </div>
+      </div>
+
+      <div className="billList" style={{display: visible ? 'block': 'none'}}>
+        { billList.map(item =>
+          <div className="bill" key={item.id}>
+            <div className="detail">
+              <div className="billType">{billTypeToName[item.useFor]}</div>
+            </div>
+            <div className={classNames('money', item.type)}>
+              {item.money.toFixed(2)}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
