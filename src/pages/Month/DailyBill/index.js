@@ -13,7 +13,7 @@ const DailyBill = ({ date, billList }) => {
       <div className="header">
         <div className="dateIcon">
           <span className="date">{date}</span>
-          <span className={classNames('icon',visible && 'expand')} onClick={()=>setVisible(!visible)}/>
+          <span className={classNames('arrow',visible && 'expand')} onClick={()=>setVisible(!visible)}/>
         </div>
         <div className="oneLineOverview">
           <div className="pay">
