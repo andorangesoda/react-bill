@@ -4,17 +4,22 @@ import classNames from 'classnames'
 import { useNavigate } from 'react-router-dom'
 import { billListData } from '@/utils/util'
 import Icon from "@/component/Icon";
+import {useState} from "react";
 
 const New = () => {
   const navigate = useNavigate()
-
+  const [billType, setBillType] = useState('pay')
   return (
     <div className="keepAccounts">
       <NavBar className="nav" onBack={() => navigate(-1)}>记账</NavBar>
       <div className="header">
         <div className="kaType">
-          <Button className={classNames('selected')} shape="rounded">支出</Button>
-          <Button className={classNames('')} shape="rounded">收入</Button>
+          <Button className={classNames(billType==='pay'?'selected':'')} shape="rounded" onClick={()=>setBillType('pay')}>
+            支出
+          </Button>
+          <Button className={classNames(billType==='income'?'selected':'')} shape="rounded" onClick={()=>setBillType('income')}>
+            收入
+          </Button>
         </div>
         <div className="kaFormWrapper">
           <div className="kaForm">
@@ -32,7 +37,7 @@ const New = () => {
       </div>
 
       <div className="kaTypeList">
-        { billListData['pay'].map(item =>
+        { billListData[billType].map(item =>
           <div className="kaType" key={item.type}>
             <div className="title">{item.name}</div>
             <div className="list">
