@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import './index.scss'
 import useBill from '@/component/bill/use-bill'
 import { billTypeToName } from '@/utils/util'
-import {useState} from "react";
+import { useState } from 'react'
 
 const DailyBill = ({ date, billList }) => {
   const { billData } = useBill({curBillList: billList})
