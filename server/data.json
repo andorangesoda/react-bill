@@ -118,6 +118,20 @@
       "date": "2024-01-03T13:19:25.775Z",
       "useFor": "dessert",
       "id": 24
+    },
+    {
+      "type": "pay",
+      "money": 0,
+      "date": "2023-01-02T16:00:00.000Z",
+      "useFor": "longdistance",
+      "id": 25
+    },
+    {
+      "type": "pay",
+      "money": -10,
+      "date": "2023-01-02T16:00:00.000Z",
+      "useFor": "dessert",
+      "id": 26
     }
   ]
 }
