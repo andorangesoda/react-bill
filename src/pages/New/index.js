@@ -3,6 +3,7 @@ import './index.scss'
 import classNames from 'classnames'
 import { useNavigate } from 'react-router-dom'
 import { billListData } from '@/utils/util'
+import Icon from "@/component/Icon";
 
 const New = () => {
   const navigate = useNavigate()
@@ -18,7 +19,7 @@ const New = () => {
         <div className="kaFormWrapper">
           <div className="kaForm">
             <div className="date">
-              <span className="icon"></span>
+              <Icon className="icon" type="calendar" />
               <span className="text">{'今天'}</span>
               <DatePicker className="kaDate" title="记账日期" max={new Date()} />
             </div>
@@ -37,7 +38,7 @@ const New = () => {
             <div className="list">
               { item.list.map(item => <div className={classNames('item','')} key={item.type}>
                   <div className="icon">
-                    <span type={item.type} />
+                    <Icon type={item.type} />
                   </div>
                   <div className="text">{item.name}</div>
               </div>
