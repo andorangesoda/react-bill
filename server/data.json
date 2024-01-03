@@ -102,8 +102,22 @@
       "type": "income",
       "money": 16000,
       "date": "2024-01-03T07:05:08.745Z",
-      "useFor": "salary",
+      "useFor": "financial",
       "id": 22
+    },
+    {
+      "type": "pay",
+      "money": -100,
+      "date": "2024-01-03T13:14:53.928Z",
+      "useFor": "game",
+      "id": 23
+    },
+    {
+      "type": "pay",
+      "money": -100,
+      "date": "2024-01-03T13:19:25.775Z",
+      "useFor": "dessert",
+      "id": 24
     }
   ]
 }

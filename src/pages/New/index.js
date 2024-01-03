@@ -3,12 +3,31 @@ import './index.scss'
 import classNames from 'classnames'
 import { useNavigate } from 'react-router-dom'
 import { billListData } from '@/utils/util'
-import Icon from "@/component/Icon";
-import {useState} from "react";
+import Icon from '@/component/Icon'
+import { useState } from 'react'
+import { addBillList } from '@/store/modules/billStore'
+import { useDispatch } from 'react-redux'
 
 const New = () => {
   const navigate = useNavigate()
   const [billType, setBillType] = useState('pay')
+  const [money, setMoney] = useState(0)
+  const [useFor, setUseFor] = useState('')
+  const dispatch = useDispatch()
+
+  const moneyChangeFn = (newMoney) => {
+    setMoney(newMoney)
+  }
+  const saveBillFn = () => {
+    const data = {
+      type: billType,
+      money: billType==='pay' ? -money : money,
+      date: new Date(),
+      useFor
+    }
+    dispatch(addBillList(data))
+  }
+
   return (
     <div className="keepAccounts">
       <NavBar className="nav" onBack={() => navigate(-1)}>记账</NavBar>
@@ -29,7 +48,7 @@ const New = () => {
               <DatePicker className="kaDate" title="记账日期" max={new Date()} />
             </div>
             <div className="kaInput">
-              <Input className="input" placeholder="0.00" type="number" />
+              <Input className="input" placeholder="0.00" type="number" value={money} onChange={moneyChangeFn}/>
               <span className="iconYuan">¥</span>
             </div>
           </div>
@@ -41,12 +60,11 @@ const New = () => {
           <div className="kaType" key={item.type}>
             <div className="title">{item.name}</div>
             <div className="list">
-              { item.list.map(item => <div className={classNames('item','')} key={item.type}>
-                  <div className="icon">
-                    <Icon type={item.type} />
+              { item.list.map(item =>
+                  <div className={classNames('item','')} key={item.type} onClick={()=>setUseFor(item.type)}>
+                    <div className="icon"><Icon type={item.type} /></div>
+                    <div className="text">{item.name}</div>
                   </div>
-                  <div className="text">{item.name}</div>
-              </div>
               )}
             </div>
           </div>
@@ -54,7 +72,7 @@ const New = () => {
       </div>
 
       <div className="btns">
-        <Button className="btn save">保 存</Button>
+        <Button className="btn save" onClick={saveBillFn}>保 存</Button>
       </div>
     </div>
   )
