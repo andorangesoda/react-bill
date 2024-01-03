@@ -97,6 +97,13 @@
       "date": "2023-12-31T07:05:08.745Z",
       "useFor": "bodybuilding",
       "id": 21
+    },
+    {
+      "type": "income",
+      "money": 16000,
+      "date": "2024-01-03T07:05:08.745Z",
+      "useFor": "salary",
+      "id": 22
     }
   ]
 }
