@@ -1,4 +1,4 @@
-import { Button, DatePicker, Input, NavBar } from 'antd-mobile'
+import {Button, DatePicker, Input, NavBar, Toast} from 'antd-mobile'
 import './index.scss'
 import classNames from 'classnames'
 import { useNavigate } from 'react-router-dom'
@@ -30,6 +30,8 @@ const New = () => {
     }
     if(money!==0) {
       dispatch(addBillList(data))
+      Toast.show({icon: 'success', content: '记账成功'})
+      setMoney(0)
     }
   }
   const dateConfirmFn = (newDate) => {
