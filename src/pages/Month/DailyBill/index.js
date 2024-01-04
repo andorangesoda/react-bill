@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import './index.scss'
-import useBill from '@/component/bill/use-bill'
+import { useBill } from '@/component/bill/use-bill'
 import { billTypeToName } from '@/utils/util'
 import { useState } from 'react'
 import Icon from '@/component/Icon'
