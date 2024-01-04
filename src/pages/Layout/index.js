@@ -1,5 +1,5 @@
 import { TabBar } from 'antd-mobile'
-import {Outlet, useNavigate} from 'react-router-dom'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { BillOutline, CalculatorOutline, AddCircleOutline} from 'antd-mobile-icons'
 import './index.scss'
 import { useDispatch } from 'react-redux'
@@ -34,9 +34,7 @@ const Layout = () => {
 
   // 给导航绑定事件，点击跳转到对应页面
   const navigate = useNavigate()
-  const toggleRouter = (path)=> {
-    navigate(path)
-  }
+  const location = useLocation()
 
   return (
     <div className="layout">
@@ -45,7 +43,7 @@ const Layout = () => {
         <Outlet />
       </div>
       <div className="footer">
-        <TabBar onChange={toggleRouter}>
+        <TabBar onChange={(path)=>navigate(path)} activeKey={location.pathname}>
           { tabs.map(item =>
             <TabBar.Item key={item.key} icon={item.icon} title={item.title} />)
           }
