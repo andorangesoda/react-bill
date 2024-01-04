@@ -15,7 +15,7 @@ const New = () => {
   const [money, setMoney] = useState(0)
   const [useFor, setUseFor] = useState('')
   const [dateVisible, setDateVisible] = useState(false)
-  const [date, setDate] = useState()
+  const [date, setDate] = useState(dayjs(new Date()).format('YYYY-MM-DD'))
   const dispatch = useDispatch()
 
   const moneyChangeFn = (newMoney) => {
