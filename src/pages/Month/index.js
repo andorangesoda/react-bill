@@ -6,7 +6,7 @@ import dayjs from 'dayjs'
 import { useSelector } from 'react-redux'
 import _ from 'lodash'
 import DailyBill from '@/pages/Month/DailyBill'
-import useBill from '@/component/bill/use-bill'
+import { useBill } from '@/component/bill/use-bill'
 
 const Month = () => {
   // state
