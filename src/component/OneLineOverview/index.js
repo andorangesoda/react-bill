@@ -12,7 +12,7 @@ const OneLineOverview = ({ pay, income }) => {
     <div className="oneLineOverview">
       <div className="pay">
         <span className="type">支出</span>
-        <span className="money">{Math.abs(pay).toFixed(2)}</span>
+        <span className="money">{pay.toFixed(2)}</span>
       </div>
       <div className="income">
         <span className="type">收入</span>

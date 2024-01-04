@@ -12,7 +12,7 @@ const TwoLineOverview = ({ pay, income }) => {
   return (
     <div className={classNames('twoLineOverview')}>
       <div className="item">
-        <span className="money">{Math.abs(pay).toFixed(2)}</span>
+        <span className="money">{pay.toFixed(2)}</span>
         <span className="type">支出</span>
       </div>
       <div className="item">

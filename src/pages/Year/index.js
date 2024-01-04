@@ -5,16 +5,23 @@ import { useState } from 'react'
 import dayjs from 'dayjs'
 import OneLineOverview from '@/component/OneLineOverview'
 import TwoLineOverview from '@/component/TwoLineOverview'
+import { getMonthOverview, getOverview, useYearBillList } from '@/component/bill/use-bill'
 
 const Year = () => {
+  // state
   const [visible, setVisible] = useState(false)
-  const getYearFn = (date=new Date()) => dayjs(date).format('YYYY')
-  const [year, setYear] = useState(getYearFn)
-
+  const thisYear = dayjs().get('year')
+  const [year, setYear] = useState(thisYear)
+  // hooks
+  const yearBills = useYearBillList(year)
+  const overview = getOverview(yearBills)
+  // method
   const confirmFn = (date)=> {
-    const curYear = getYearFn(date)
-    setYear(curYear)
+    setYear(dayjs(date).get('year'))
   }
+
+  const maxMonth = thisYear === year ? dayjs().get('month') + 1 : 12
+  const monthBills = new Array(maxMonth).fill('').map((_, month) => getMonthOverview(yearBills, month)).reverse()
 
   return (
     <div className="billDetail">
@@ -33,13 +40,15 @@ const Year = () => {
       <div className="content">
         {/* 总统计 */}
         <div className='overview'>
-          <TwoLineOverview className="overview" pay={100} income={16000} />
+          <TwoLineOverview className="overview" pay={overview.pay} income={overview.income} />
         </div>
         {/* 每月明细 */}
-        <div className="monthBill">
-          <div className="date">1月</div>
-          <OneLineOverview pay={200} income={700} />
-        </div>
+        { monthBills.map((item, index) =>
+          <div className="monthBill" key={index}>
+            <div className="date">{maxMonth - index}月</div>
+            <OneLineOverview pay={item.pay} income={item.income} />
+          </div>
+        )}
       </div>
     </div>
   )
