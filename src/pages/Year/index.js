@@ -40,7 +40,7 @@ const Year = () => {
       <div className="content">
         {/* 总统计 */}
         <div className='overview'>
-          <TwoLineOverview className="overview" pay={overview.pay} income={overview.income} />
+          <TwoLineOverview pay={overview.pay} income={overview.income} />
         </div>
         {/* 每月明细 */}
         { monthBills.map((item, index) =>
