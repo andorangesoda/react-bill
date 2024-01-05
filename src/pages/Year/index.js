@@ -21,6 +21,7 @@ const Year = () => {
   }
 
   const maxMonth = thisYear === year ? dayjs().get('month') + 1 : 12
+  // map 中 _ 就是一个占位符，用于表示映射函数中的第一个参数，即数组元素的值，但在这里并没有使用。 month 是数组索引
   const monthBills = new Array(maxMonth).fill('').map((_, month) => getMonthOverview(yearBills, month)).reverse()
 
   return (
