@@ -4,6 +4,7 @@ import { useBill } from '@/component/bill/use-bill'
 import { billTypeToName } from '@/utils/util'
 import { useState } from 'react'
 import Icon from '@/component/Icon'
+import OneLineOverview from "@/component/OneLineOverview";
 
 const DailyBill = ({ date, billList }) => {
   const { billData } = useBill({curBillList: billList})
@@ -16,20 +17,7 @@ const DailyBill = ({ date, billList }) => {
           <span className="date">{date}</span>
           <span className={classNames('arrow',visible && 'expand')} onClick={()=>setVisible(!visible)}/>
         </div>
-        <div className="oneLineOverview">
-          <div className="pay">
-            <span className="type">支出</span>
-            <span className="money">{billData.pay}</span>
-          </div>
-          <div className="income">
-            <span className="type">收入</span>
-            <span className="money">{billData.income}</span>
-          </div>
-          <div className="balance">
-            <span className="type">结余</span>
-            <span className="money">{billData.balance}</span>
-          </div>
-        </div>
+        <OneLineOverview pay={billData.pay} income={billData.income} />
       </div>
 
       <div className="billList" style={{display: visible ? 'block': 'none'}}>

@@ -18,9 +18,8 @@ export const useBill = ({curBillList}) => {
     const pay = plusMoneyFn(curBillList, 'pay')
     const income = plusMoneyFn(curBillList, 'income')
     return {
-      pay: pay.toFixed(2),
-      income: income.toFixed(2),
-      balance: (pay + income).toFixed(2)
+      pay,
+      income
     }
   }, [curBillList])
 
